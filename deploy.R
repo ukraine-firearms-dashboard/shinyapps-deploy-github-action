@@ -2,6 +2,9 @@
 cat("loading packages from:", paste("\n - ", .libPaths(), collapse = ""), "\n\n")
 
 # use renv to detect and install required packages.
+print(list.files(''))
+source('/custom_install.R')
+
 if (file.exists("renv.lock")) {
   renv::restore(prompt = FALSE)
 } else {
@@ -9,7 +12,6 @@ if (file.exists("renv.lock")) {
 }
 
 # add custom packages
-source('/custom_install.R')
 
 # set up some helper functions for fetching environment variables
 defined <- function(name) {
