@@ -1,4 +1,8 @@
 install.packages('devtools')
+install.packages('gitcreds')
 library(devtools)
-install_github("rstudio/gridlayout")
-install_github("r-quantities/units")
+library(gitcreds)
+
+gh_pat <- Sys.getenv("GITHUB_PAT")
+install_github("rstudio/gridlayout", auth_token = gh_pat)
+install_github("r-quantities/units", auth_token = gh_pat)
