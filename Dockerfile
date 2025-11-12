@@ -6,8 +6,8 @@ FROM rocker/shiny-verse:latest
 # install rsconnect and renv packages, as well as prerequisite libraries
 RUN apt-get update && apt-get install -y \
     libssl-dev \
-    libcurl4-openssl-dev
-RUN apt-get install libudunits2-dev
+    libcurl4-openssl-dev \
+    libudunits2-dev
 RUN install2.r rsconnect renv
 
 # copy deploy script to root of the workspace
