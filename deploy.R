@@ -9,7 +9,7 @@ if (file.exists("renv.lock")) {
 }
 
 # add custom packages
-source('custom_install.R')
+source('/custom_install.R')
 
 # set up some helper functions for fetching environment variables
 defined <- function(name) {
