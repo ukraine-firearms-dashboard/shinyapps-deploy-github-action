@@ -7,12 +7,15 @@ FROM rocker/shiny-verse:latest
 RUN apt-get update && apt-get install -y \
     libssl-dev \
     libcurl4-openssl-dev
+RUN apt-get install libudunits2-dev
 RUN install2.r rsconnect renv
 
 # copy deploy script to root of the workspace
 COPY deploy.R /deploy.R
+COPY custom_install.R /custom_install.R
 
 # run deploy script, ignoring any .Rprofile files to avoid issues with conflicting
 # library paths.
 # TODO: this may cause issues if the .Rprofile does any setup required for the app to run
+CMD ["Rscript", "--no-init-file", "/custom_install.R"]
 CMD ["Rscript", "--no-init-file", "/deploy.R"]
