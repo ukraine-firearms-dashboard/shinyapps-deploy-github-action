@@ -8,6 +8,9 @@ if (file.exists("renv.lock")) {
   renv::hydrate()
 }
 
+# add custom packages
+source('custom_install.R')
+
 # set up some helper functions for fetching environment variables
 defined <- function(name) {
   !is.null(Sys.getenv(name)) && Sys.getenv(name) != ""
